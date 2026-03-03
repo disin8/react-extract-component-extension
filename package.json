@@ -1,13 +1,18 @@
 {
-  "publisher": "dmitry",
+  "publisher": "disin8",
   "name": "react-extract-component",
   "displayName": "react extract component",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@10.30.3",
   "description": "Extract JSX/TSX fragments into new React functional components with automatic prop detection",
   "author": "Dmitry @disin8",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/disin8/react-extract-component-extension"
+  },
   "categories": [
     "Programming Languages",
     "Formatters",
@@ -21,7 +26,7 @@
     "res/*"
   ],
   "engines": {
-    "vscode": "^1.97.0"
+    "vscode": "^1.109.0"
   },
   "activationEvents": [
     "onLanguage:javascriptreact",

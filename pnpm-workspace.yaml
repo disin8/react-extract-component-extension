@@ -1,6 +1,6 @@
 shellEmulator: true
 
-trustPolicy: permissive
+trustPolicy: no-downgrade
 
 packages:
   - playground

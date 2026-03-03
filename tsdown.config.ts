@@ -11,6 +11,7 @@ export default defineConfig({
   external: [
     'vscode',
   ],
+  inlineOnly: false,
   hooks(hooks) {
     hooks.hookOnce('build:prepare', () => {
       execSync('nr update')
