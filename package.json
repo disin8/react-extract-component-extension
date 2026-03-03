@@ -1,0 +1,121 @@
+{
+  "publisher": "dmitry",
+  "name": "react-extract-component",
+  "displayName": "react extract component",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.30.3",
+  "description": "Extract JSX/TSX fragments into new React functional components with automatic prop detection",
+  "author": "Dmitry @disin8",
+  "license": "MIT",
+  "categories": [
+    "Programming Languages",
+    "Formatters",
+    "Other"
+  ],
+  "main": "./dist/index.cjs",
+  "icon": "res/icon.png",
+  "files": [
+    "LICENSE.md",
+    "dist/*",
+    "res/*"
+  ],
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "activationEvents": [
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "reactExtractComponent.extract",
+        "title": "Extract to component"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "reactExtractComponent.extract",
+          "when": "editorHasSelection && resourceLangId =~ /^(typescriptreact|javascriptreact)$/",
+          "group": "1_modification@1"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "react extract component",
+      "properties": {
+        "reactExtractComponent.fileNameConvention": {
+          "type": "string",
+          "default": "kebab-case",
+          "enum": [
+            "PascalCase",
+            "camelCase",
+            "kebab-case"
+          ],
+          "description": "Naming convention for generated component files"
+        },
+        "reactExtractComponent.createComponentFolder": {
+          "type": "boolean",
+          "default": false,
+          "description": "Create a folder for the component with an index.ts barrel file"
+        },
+        "reactExtractComponent.propsInterfaceNaming": {
+          "type": "string",
+          "default": "IPrefix",
+          "enum": [
+            "IPrefix",
+            "Suffix"
+          ],
+          "description": "Naming pattern for props interfaces: IPrefix = I{Name}Props, Suffix = {Name}Props"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsdown src/index.ts --external vscode",
+    "dev": "nr build --watch --sourcemap",
+    "prepare": "nr update && husky",
+    "update": "vscode-ext-gen --output src/generated/meta.ts",
+    "lint": "eslint .",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "vscode:prepublish": "nr build",
+    "changelog": "changelogen --output CHANGELOG.md",
+    "release": "bumpp && nr changelog",
+    "ext:package": "vsce package --no-dependencies",
+    "ext:publish": "vsxpub --no-dependencies"
+  },
+  "dependencies": {
+    "@babel/generator": "^7.29.1",
+    "@babel/parser": "^7.29.0",
+    "@babel/traverse": "^7.29.0",
+    "@babel/types": "^7.29.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^7.6.1",
+    "@antfu/ni": "^28.2.0",
+    "@commitlint/cli": "^20.4.2",
+    "@commitlint/config-conventional": "^20.4.2",
+    "@types/babel__generator": "^7.27.0",
+    "@types/babel__traverse": "^7.28.0",
+    "@types/node": "^25.3.3",
+    "@types/vscode": "^1.109.0",
+    "@vscode/vsce": "^3.7.1",
+    "bumpp": "^10.4.1",
+    "changelogen": "^0.6.2",
+    "eslint": "^10.0.2",
+    "husky": "^9.1.7",
+    "ovsx": "^0.10.9",
+    "reactive-vscode": "^1.0.0-beta.2",
+    "taze": "^19.10.0",
+    "tsdown": "^0.20.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18",
+    "vscode-ext-gen": "^1.6.0",
+    "vsxpub": "^0.1.4"
+  }
+}
