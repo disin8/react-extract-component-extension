@@ -11,7 +11,10 @@ export default defineConfig({
   external: [
     'vscode',
   ],
-  inlineOnly: false,
+  noExternal: [
+    /^@babel\//,
+    'reactive-vscode',
+  ],
   hooks(hooks) {
     hooks.hookOnce('build:prepare', () => {
       execSync('nr update')
