@@ -3,7 +3,7 @@
   "name": "react-extract-component",
   "displayName": "react extract component",
   "type": "module",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "packageManager": "pnpm@10.30.3",
   "description": "Extract JSX/TSX fragments into new React functional components with automatic prop detection",
